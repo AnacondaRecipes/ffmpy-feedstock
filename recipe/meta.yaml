@@ -10,17 +10,16 @@ source:
   sha256: 757591581eee25b4a50ac9ffb9b58035a2794533db47e0512f53fb2d7b6f9adc
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - ffmpeg
   run:
-    - python >=3.6
+    - python
     - ffmpeg
 
 test:
@@ -34,8 +33,15 @@ test:
 about:
   home: https://github.com/Ch00k/ffmpy
   summary: A simple Python wrapper for ffmpeg
+  description: |
+    ffmpy is a simple FFmpeg command line wrapper.
+    It implements a Pythonic interface for FFmpeg command line compilation
+    and uses Python's subprocess to execute the compiled command line.
   license: MIT
   license_file: LICENSE
+  license_family: MIT
+  doc_url: https://ffmpy.readthedocs.io/
+  dev_url: https://github.com/Ch00k/ffmpy
 
 extra:
   recipe-maintainers:
