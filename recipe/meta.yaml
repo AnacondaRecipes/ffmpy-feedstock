@@ -22,6 +22,8 @@ requirements:
   run:
     - python
     - ffmpeg
+  run_constrained:
+    - psutil >=5.8.0
 
 test:
   imports:
