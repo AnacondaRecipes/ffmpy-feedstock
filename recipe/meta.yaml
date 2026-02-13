@@ -18,10 +18,10 @@ requirements:
   host:
     - python
     - pip
-    - ffmpeg
+    - ffmpeg {{ ffmpeg }}
   run:
     - python
-    - ffmpeg
+    - ffmpeg {{ ffmpeg }}
   run_constrained:
     - psutil >=5.8.0
 
