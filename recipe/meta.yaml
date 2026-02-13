@@ -18,6 +18,7 @@ requirements:
   host:
     - python
     - pip
+    - uv-build >=0.7.9,<0.10.0
     - ffmpeg {{ ffmpeg }}
   run:
     - python
