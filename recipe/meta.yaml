@@ -1,15 +1,16 @@
 {% set name = "ffmpy" %}
-{% set version = "0.3.0" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ffmpy-{{ version }}.tar.gz
-  sha256: 757591581eee25b4a50ac9ffb9b58035a2794533db47e0512f53fb2d7b6f9adc
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: b12932e95435c8820f1cd041024402765f821971e4bae753b327fc02a6e12f8b
 
 build:
+  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
@@ -17,16 +18,19 @@ requirements:
   host:
     - python
     - pip
-    - ffmpeg
+    - uv-build >=0.7.9,<0.10.0
   run:
     - python
-    - ffmpeg
+    - ffmpeg {{ ffmpeg }}
+  run_constrained:
+    - psutil >=5.8.0
 
 test:
   imports:
     - ffmpy
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
   requires:
     - pip
 
@@ -40,7 +44,7 @@ about:
   license: MIT
   license_file: LICENSE
   license_family: MIT
-  doc_url: https://ffmpy.readthedocs.io/
+  doc_url: https://ffmpy.readthedocs.io
   dev_url: https://github.com/Ch00k/ffmpy
 
 extra:
