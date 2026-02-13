@@ -44,7 +44,7 @@ about:
   license: MIT
   license_file: LICENSE
   license_family: MIT
-  doc_url: https://ffmpy.readthedocs.io/
+  doc_url: https://ffmpy.readthedocs.io
   dev_url: https://github.com/Ch00k/ffmpy
 
 extra:
